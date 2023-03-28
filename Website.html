@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Scoring Software</title>
+  </head>
+  <body>
+    <h1>Student Scoring Software</h1>
+    
+    <form>
+      <label for="name">Student Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      
+      <label for="btec-level">BTEC Level:</label>
+      <select id="btec-level" name="btec-level">
+        <option value="Level 2">Level 2</option>
+        <option value="Level 3">Level 3</option>
+      </select><br><br>
+      
+      <label for="unit1">Unit 1 Information Technology:</label>
+      <input type="text" id="unit1" name="unit1"><br><br>
+      
+      <label for="unit3">Unit 3 Social Media in Business:</label>
+      <input type="text" id="unit3" name="unit3"><br><br>
+      
+      <label for="unit4">Unit 4 Programming:</label>
+      <input type="text" id="unit4" name="unit4"><br><br>
+      
+      <label for="unit6">Unit 6 Website Development:</label>
+      <input type="text" id="unit6" name="unit6"><br><br>
+      
+      <input type="button" value="Calculate Result" onclick="calculateGrade()"><br><br>
+      
+      <label for="result">Result:</label>
+      <input type="text" id="result" name="result" readonly>
+    </form>
+    
+    <script>
+      function calculateGrade() {
+        // get grades for each unit
+        var unit1 = document.getElementById("unit1").value;
+        var unit3 = document.getElementById("unit3").value;
+        var unit4 = document.getElementById("unit4").value;
+        var unit6 = document.getElementById("unit6").value;
+        
+        // calculate overall grade
+        var highestGrade = Math.max(unit1, unit3, unit4, unit6);
+        var overallGrade = "";
+        
+        if (highestGrade == "D") {
+          overallGrade = "Distinction";
+        } else if (highestGrade == "M") {
+          overallGrade = "Merit";
+        } else if (highestGrade == "P") {
+          overallGrade = "Pass";
+        } else {
+          overallGrade = "Fail";
+        }
+        
+        // display overall grade in result box
+        document.getElementById("result").value = overallGrade;
+      }
+    </script>
+  </body>
+</html>
